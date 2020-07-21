@@ -1,0 +1,7 @@
+{
+  "extends": "@catsmiaow/eslint-config",
+  "rules": {
+    // https://github.com/benmosher/eslint-plugin-import/issues/903
+    "import/no-extraneous-dependencies": "off"
+  }
+}

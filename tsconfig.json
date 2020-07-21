@@ -1,0 +1,18 @@
+{
+  "extends": "@catsmiaow/tsconfig",
+  "compilerOptions": {
+    "lib": ["ES2019", "ES2020.Promise"],
+    "outDir": "dist",
+    "noUnusedParameters": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+  },
+  "include": [
+    "./typings/global.d.ts",
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
