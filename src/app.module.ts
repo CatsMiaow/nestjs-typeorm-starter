@@ -30,7 +30,7 @@ import { SampleModule } from './sample';
       rootPath: `${__dirname}/../public`,
       renderPath: '/',
     }),
-    // API
+    // API Sample
     SampleModule,
   ],
   providers: [{
