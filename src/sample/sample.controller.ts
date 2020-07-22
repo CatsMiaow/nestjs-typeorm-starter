@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Param, Post, Put, Delete, NotFoundException, InternalServerErrorException } from '@nestjs/common';
+import { Controller, Body, Get, Param, Post, Put, Delete,
+  NotFoundException, InternalServerErrorException, ParseIntPipe } from '@nestjs/common';
 
 import { SampleDto } from './sample.dto';
 import { SampleService } from './sample.service';
@@ -9,7 +10,7 @@ export class SampleController {
   constructor(private sample: SampleService) {}
 
   @Get('memo/:id')
-  public async read(@Param('id') id: number): Promise<Memo> {
+  public async read(@Param('id', ParseIntPipe) id: number): Promise<Memo> {
     const result = await this.sample.read(id);
     if (!result) {
       throw new NotFoundException('NotFoundMemo');
@@ -29,14 +30,14 @@ export class SampleController {
   }
 
   @Put('memo/:id')
-  public async update(@Param('id') id: number, @Body() body: SampleDto): Promise<{ success: boolean }> {
+  public async update(@Param('id', ParseIntPipe) id: number, @Body() body: SampleDto): Promise<{ success: boolean }> {
     const result = await this.sample.update(id, body);
 
     return { success: !!result.affected };
   }
 
   @Delete('memo/:id')
-  public async remove(@Param('id') id: number): Promise<{ success: boolean }> {
+  public async remove(@Param('id', ParseIntPipe) id: number): Promise<{ success: boolean }> {
     const result = await this.sample.remove(id);
 
     return { success: !!result.affected };
