@@ -24,24 +24,24 @@ beforeAll(async () => {
   sample = app.get(SampleController);
 });
 
-test('create memo"', async () => {
+test('create memo', async () => {
   const result = await sample.create({ title: 'FooBar', content: 'Hello World' });
   expect(result).toHaveProperty('id');
   idx = result.id;
 });
 
-test('read memo"', async () => {
+test('read memo', async () => {
   expect(await sample.read(idx)).toBeInstanceOf(Memo);
 });
 
-test('update memo"', async () => {
+test('update memo', async () => {
   expect(await sample.update(idx, { title: 'Blahblahblah' })).toHaveProperty('success', true);
 });
 
-test('delete memo"', async () => {
+test('delete memo', async () => {
   expect(await sample.remove(idx)).toHaveProperty('success', true);
 });
 
 afterAll(async () => {
-  await app.close();
+  await app?.close();
 });
