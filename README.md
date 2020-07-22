@@ -51,7 +51,7 @@ npm start
 
 ### Links
 
-- [NestJS Project Structure](https://github.com/CatsMiaow/node-nestjs-structure)
+- [Nest Project Structure](https://github.com/CatsMiaow/node-nestjs-structure)
 - [Nest Sample](https://github.com/nestjs/nest/tree/master/sample)
 - [Awesome Nest](https://github.com/juliandavidmr/awesome-nestjs)
 - [NestJS](https://docs.nestjs.com)
