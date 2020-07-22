@@ -24,21 +24,21 @@ beforeAll(async () => {
   sample = app.get(SampleController);
 });
 
-it('create memo"', async () => {
+test('create memo"', async () => {
   const result = await sample.create({ title: 'FooBar', content: 'Hello World' });
   expect(result).toHaveProperty('id');
   idx = result.id;
 });
 
-it('read memo"', async () => {
+test('read memo"', async () => {
   expect(await sample.read(idx)).toBeInstanceOf(Memo);
 });
 
-it('update memo"', async () => {
+test('update memo"', async () => {
   expect(await sample.update(idx, { title: 'Blahblahblah' })).toHaveProperty('success', true);
 });
 
-it('delete memo"', async () => {
+test('delete memo"', async () => {
   expect(await sample.remove(idx)).toHaveProperty('success', true);
 });
 
