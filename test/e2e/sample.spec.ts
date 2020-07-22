@@ -56,5 +56,5 @@ test('DELETE: /sample/memo/:idx', async () => {
 });
 
 afterAll(async () => {
-  await app.close();
+  await app?.close();
 });
