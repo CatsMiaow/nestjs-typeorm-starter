@@ -4,9 +4,10 @@ import { APP_FILTER } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { configuration } from './config';
 import { ExceptionsFilter, LoggerMiddleware } from './common';
-import { SampleModule } from './sample';
+import { CommonModule } from './common/common.module';
+import { configuration } from './config';
+import { SampleModule } from './sample/sample.module';
 
 @Module({
   imports: [
@@ -30,6 +31,8 @@ import { SampleModule } from './sample';
       rootPath: `${__dirname}/../public`,
       renderPath: '/',
     }),
+    // Logger
+    CommonModule,
     // API Sample
     SampleModule,
   ],

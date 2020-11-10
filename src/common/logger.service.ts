@@ -1,23 +1,25 @@
 /* eslint-disable no-console */
-import { Logger } from '@nestjs/common';
+import { Injectable, Logger as BaseLogger, Scope } from '@nestjs/common';
 
-export class LoggerService extends Logger {
-  public log(message: unknown, context?: string): void {
-    console.log(this.prefix(context), message);
-    // super.log(message, context);
+@Injectable({ scope: Scope.TRANSIENT })
+export class Logger extends BaseLogger {
+  public log(message: unknown): void {
+    // super.log(message, this.context);
+    console.log(this.prefix(), message);
   }
 
-  public error(message: unknown, trace?: string, context?: string): void {
-    console.error(this.prefix(context), message, '\n', trace);
-    // super.error(message, trace, context);
+  public error(message: unknown, trace?: string): void {
+    // super.error(message, trace, this.context);
+    console.error(this.prefix(), message, '\n', trace);
   }
 
-  private prefix(context?: string): string {
+  private prefix(): string {
+    // dayjs().format('YYYY-MM-DD HH:mm:ss');
     let prefix = new Date().toLocaleString();
-    if (context) {
-      prefix += ` ${context}`;
+    if (this.context) {
+      prefix += ` [${this.context}]`;
     }
 
-    return `${prefix}]`;
+    return prefix;
   }
 }

@@ -2,10 +2,11 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConnectionOptions } from 'typeorm';
 
-import { SampleModule } from './sample.module';
-import { SampleController } from './sample.controller';
-import { Memo } from '../entity';
+import { CommonModule } from '../common/common.module';
 import { configuration } from '../config';
+import { Memo } from '../entity';
+import { SampleController } from './sample.controller';
+import { SampleModule } from './sample.module';
 
 let app: TestingModule;
 let sample: SampleController;
@@ -14,6 +15,7 @@ let idx: number;
 beforeAll(async () => {
   app = await Test.createTestingModule({
     imports: [
+      CommonModule,
       SampleModule,
       TypeOrmModule.forRoot({
         ...(<ConnectionOptions>(await configuration()).db),

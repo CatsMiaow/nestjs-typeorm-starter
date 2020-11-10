@@ -6,18 +6,20 @@ import session from 'express-session';
 import helmet from 'helmet';
 
 import { AppModule } from './app.module';
-import { LoggerService } from './common';
+import { Logger } from './common';
 
 async function bootstrap(): Promise<void> {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const isProduction = (process.env.NODE_ENV === 'production');
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    logger: isProduction ? Logger : undefined,
+  });
   app.useGlobalPipes(new ValidationPipe({
     disableErrorMessages: true,
     transform: true, // transform object to DTO class
   }));
 
-  if (process.env.NODE_ENV === 'production') {
-    app.useLogger(app.get(LoggerService));
-    app.set('trust proxy', 1);
+  if (isProduction) {
+    app.enable('trust proxy');
   }
 
   //#region Express Middleware
