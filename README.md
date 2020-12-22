@@ -1,6 +1,6 @@
 # nestjs-typeorm-starter
 
-Node.js Nest framework starter
+Node.js Nest framework starter with TypeORM
 
 ## Configuration
 
@@ -12,6 +12,8 @@ Edit the file in the [config](src/config) folder.
 ```sh
 npm ci
 ```
+
+Create a typeorm model in the [entity](src/entity) folder.
 
 ## Development
 
