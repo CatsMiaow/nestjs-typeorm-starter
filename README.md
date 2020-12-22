@@ -1,4 +1,4 @@
-# nestjs-starter
+# nestjs-typeorm-starter
 
 Node.js Nest framework starter
 
