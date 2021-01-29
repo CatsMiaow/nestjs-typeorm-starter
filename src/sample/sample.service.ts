@@ -11,19 +11,19 @@ export class SampleService {
     private memo: Repository<Memo>,
   ) {}
 
-  public create(data: Partial<Memo>): Promise<Memo> {
+  public async create(data: Partial<Memo>): Promise<Memo> {
     return this.memo.save(data);
   }
 
-  public read(id: number): Promise<Optional<Memo>> {
+  public async read(id: number): Promise<Optional<Memo>> {
     return this.memo.findOne(id);
   }
 
-  public update(id: number, data: Partial<Memo>): Promise<UpdateResult> {
+  public async update(id: number, data: Partial<Memo>): Promise<UpdateResult> {
     return this.memo.update(id, data);
   }
 
-  public remove(id: number): Promise<DeleteResult> {
+  public async remove(id: number): Promise<DeleteResult> {
     return this.memo.delete(id);
   }
 }
